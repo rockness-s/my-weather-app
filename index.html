@@ -13,7 +13,7 @@
   <div class="container">
     <div class="current-weather">
       <div class="row main-section">
-        <div class="col-6">
+        <div class="col-6 city-upd">
           <h1>
             Barcelona
           </h1> 
@@ -23,12 +23,14 @@
         </div>
         <div class="col-6">
             <ul>
-              <li>
-              <img src="https://ssl.gstatic.com/onebox/weather/64/sunny.png" alt="sunny">
-              30°C | 
-              <a href="#">°F</a>
+              <li class="current-temperature">
+              <i class="fa-solid fa-sun current-sky"></i>
+              <strong>30</strong> 
+              <span class="units">°C | 
+              <a href="#" class="fahrenheit-unit">°F</a>
+            </span>
               </li>
-              <li>
+              <li class="real-feel-temp">
                 RealFeel: 32°C
               </li>
             </ul>
@@ -36,41 +38,38 @@
       </div> 
       <div class="row main-details">
         <div class="col-3">
-          <div>Wind</div>
+          <div class="title">Wind</div>
           <div class="details-wind">4 km/h</div>
         </div>
         <div class="col-3">
-          <div>Humidity</div>
+          <div class="title">Humidity</div>
           <div class="details-hum">20%</div>
         </div>
         <div class="col-3">
-          <div>Sunrise</div>
+          <div class="title">Sunrise</div>
           <div class="details-sunrise">04:02</div>
         </div>
         <div class="col-3">
-          <div>Sunset</div>
+          <div class="title">Sunset</div>
           <div class="details-sunset">21:35</div>
         </div>
       </div>
-      </br>
-     </br>
-      </br>
     </div>
 
     <div class="forecast-weather">
-        <div class="row forecast-one">
+        <div class="row forecast one">
           <div class="col-2 forecast-date">
             <div>Mon</div>
             <div>25/07</div>
           </div>
           <div class="col-2 forecast-sky">
-            <i class="fa-solid fa-sun"></i>
+            <i class="fa-solid fa-sun sky"></i>
           </div>
          <div class="col-3 forecast-temp">
             <div><i class="fa-solid fa-temperature-half"></i></div>
             <div><strong>28</strong>/25°C</div>
           </div>
-          <div class="col-2 forecast-wind">
+          <div class="col-3 forecast-wind">
             <div><i class="fa-solid fa-wind"></i></div>
             <div>7 km/h</div>
           </div>
@@ -80,19 +79,19 @@
           </div>
         </div>
 
-        <div class="row forecast-two">
+        <div class="row forecast two">
           <div class="col-2 forecast-date">
-            <div>Mon</div>
+            <div>Tue</div>
             <div>26/07</div>
           </div>
           <div class="col-2 forecast-sky">
-            <i class="fa-solid fa-sun"></i>
+            <i class="fa-solid fa-sun sky"></i>
           </div>
          <div class="col-3 forecast-temp">
             <div><i class="fa-solid fa-temperature-half"></i></div>
             <div><strong>30</strong>/27°C</div>
           </div>
-          <div class="col-2 forecast-wind">
+          <div class="col-3 forecast-wind">
             <div><i class="fa-solid fa-wind"></i></div>
             <div>4 km/h</div>
           </div>
@@ -102,19 +101,19 @@
           </div>
         </div>
 
-        <div class="row forecast-three">
+        <div class="row forecast three">
           <div class="col-2 forecast-date">
-            <div>Mon</div>
+            <div>Wed</div>
             <div>27/07</div>
           </div>
           <div class="col-2 forecast-sky">
-            <i class="fa-solid fa-cloud"></i>
+            <i class="fa-solid fa-cloud sky"></i>
           </div>
          <div class="col-3 forecast-temp">
             <div><i class="fa-solid fa-temperature-half"></i></div>
             <div><strong>28</strong>/25°C</div>
           </div>
-          <div class="col-2 forecast-wind">
+          <div class="col-3 forecast-wind">
             <div><i class="fa-solid fa-wind"></i></div>
             <div>5 km/h</div>
           </div>
@@ -124,19 +123,19 @@
           </div>
         </div>
 
-        <div class="row forecast-four">
+        <div class="row forecast four">
           <div class="col-2 forecast-date">
-            <div>Mon</div>
+            <div>Thu</div>
             <div>28/07</div>
           </div>
           <div class="col-2 forecast-sky">
-            <i class="fa-solid fa-sun"></i>
+            <i class="fa-solid fa-sun sky"></i>
           </div>
          <div class="col-3 forecast-temp">
             <div><i class="fa-solid fa-temperature-half"></i></div>
             <div><strong>27</strong>/25°C</div>
           </div>
-          <div class="col-2 forecast-wind">
+          <div class="col-3 forecast-wind">
             <div><i class="fa-solid fa-wind"></i></div>
             <div>0 km/h</div>
           </div>
@@ -146,19 +145,19 @@
           </div>
         </div>
 
-        <div class="row forecast-five">
+        <div class="row forecast five">
           <div class="col-2 forecast-date">
-            <div>Mon</div>
+            <div>Fri</div>
             <div>29/07</div>
           </div>
           <div class="col-2 forecast-sky">
-            <i class="fa-solid fa-cloud"></i>
+            <i class="fa-solid fa-cloud sky"></i>
           </div>
          <div class="col-3 forecast-temp">
             <div><i class="fa-solid fa-temperature-half"></i></div>
             <div><strong>22</strong>/20°C</div>
           </div>
-          <div class="col-2 forecast-wind">
+          <div class="col-3 forecast-wind">
             <div><i class="fa-solid fa-wind"></i></div>
             <div>6 km/h</div>
           </div>
@@ -171,9 +170,6 @@
 
 
     </div>
-
-  </br>
-
   </div>
     <script src="src/java.js"></script>
 </body>

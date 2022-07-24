@@ -1,0 +1,120 @@
+body {
+    background-image: url("https://s3.amazonaws.com/shecodesio-production/uploads/files/000/041/516/original/davies-designs-studio-G-6kwVnClsE-unsplash.jpg?1658673955");
+  }
+
+ .container {
+    max-width: 600px;
+    margin: 60px auto;
+    margin-bottom: 2px;
+    min-width: 500px;
+}
+
+.current-weather,
+.forecast-weather {
+    border: none;
+    margin: 20px auto;
+    background-color: rgba(245, 243, 243, 0.6);
+    padding: 20px 30px;
+}
+
+ul {
+    list-style: none;
+    padding-left: 0;
+    float: right;
+    
+}
+
+h1 {
+    font-weight: 700;
+    font-size: 40px;
+    margin-bottom: 0;
+}
+
+p {
+    font-size: 14px;
+    margin-bottom: 0;
+}
+
+.current-temperature strong {
+font-size: 40px;
+font-weight: 500;
+}
+
+.units {
+    position: relative;
+    top: -15px;
+    font-size: 14px;
+}
+
+.real-feel-temp {
+font-size: 14px;
+text-align: right;
+}
+
+.current-sky {
+font-size: 60px; 
+position: relative;
+right: 18px;  
+top: 18px; 
+}
+
+.main-details,
+.forecast-weather {
+text-align: center;
+}
+
+.title {
+    font-weight: 500;
+    
+}
+
+.city-upd {
+vertical-align: middle;
+position: relative;
+top: 15px;
+}
+
+.main-section {
+   margin-bottom: 8px;
+}
+
+.forecast-weather .row {
+    margin: 10px 0px;
+}
+
+.forecast-sky .sky {
+  font-size: 20px; 
+  position: relative;
+  top: 12px;
+}
+
+.fahrenheit-unit {
+    text-decoration: none;
+    color: black;
+}
+
+.fahrenheit-unit:hover {
+    text-decoration: underline;
+    color: rgba(94, 94, 94, 0.861);
+}
+
+.forecast::after {
+    background-color: black;
+    content: "";
+    display: block;
+    height: 1px;
+    text-decoration: underline;
+    transform: scale(0);
+    transition: all 0.3s ease-in-out;
+    width: 100%;
+}
+
+.forecast:hover::after {
+    transform: scale(1);
+  }
+
+  footer {
+    text-align: center;
+    font-size: 10px;
+
+  }
