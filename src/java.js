@@ -1,8 +1,8 @@
 
 function formatDate(timestamp) {
-    let dateUpd = new Date(timestamp);
-    let hoursUpd = String(dateUpd.getHours()).padStart(2, "0");
-    let minutesUpd = String(dateUpd.getMinutes()).padStart(2, "0");
+    let timeUpd = new Date(timestamp);
+    let hoursUpd = String(timeUpd.getHours()).padStart(2, "0");
+    let minutesUpd = String(timeUpd.getMinutes()).padStart(2, "0");
     let day = [
         "Sunday",
         "Monday",
@@ -12,12 +12,33 @@ function formatDate(timestamp) {
         "Friday",
         "Saturday"
     ];
-    let dayUpd = day[dateUpd.getDay()];
+    let dayFull = day[timeUpd.getDay()];
 
-    return `${dayUpd} ${hoursUpd} : ${minutesUpd}`
+    return `${dayFull} ${hoursUpd} : ${minutesUpd}`
 }
 
-//
+function fullDate () {
+    let dateNow = new Date ();
+    let date = dateNow.getDate();
+    let month = [
+        "Jan",
+        "Feb",
+        "Mar",
+        "Apr",
+        "May",
+        "Jun",
+        "Jul",
+        "Aug",
+        "Sep",
+        "Oct",
+        "Nov",
+        "Dec"
+    ];
+    let monthFull = month[dateNow.getMonth()];
+    let year = dateNow.getFullYear();
+
+    return `${date} ${monthFull} ${year}`
+}
 
 function showMainInfo(response) {
 
@@ -27,7 +48,8 @@ let tempEl = document.querySelector("#temp");
 let tempRealEl = document.querySelector("#real-feel");
 let windEl = document.querySelector("#details-wind");
 let humEl = document.querySelector("#details-hum");
-let dateEl = document.querySelector("#last-upd");
+let timeEl = document.querySelector("#time-upd");
+let dayEl = document.querySelector("#date-upd");
 
 let sunriseTime = Math.round(response.data.sys.sunrise);
 let dateRise = new Date(sunriseTime * 1000);
@@ -47,7 +69,8 @@ windEl.innerHTML = Math.round(response.data.wind.speed * 3.6);
 humEl.innerHTML = (response.data.main.humidity);
 sunriseEL.innerHTML = `${hoursRise} : ${minutesRise}`;
 sunsetEL.innerHTML = `${hoursSet} : ${minutesSet}`;
-dateEl.innerHTML = formatDate(response.data.dt * 1000);
+timeEl.innerHTML = formatDate(response.data.dt * 1000);
+dayEl.innerHTML = fullDate();
 }
 
 let apiKey = "b5fbcef1543bc4503e1a5412457235aa";
