@@ -3,7 +3,7 @@ body {
   }
 
  .container {
-    max-width: 600px;
+    max-width: 705px;
     margin: 60px auto;
     margin-bottom: 2px;
     min-width: 500px;
@@ -34,8 +34,13 @@ h1 {
 .upd {
     font-size: 10px;
     margin-bottom: 0;
-    
+    display: inline-block;
 }
+
+.date {
+    margin-left: 6px;
+}
+
 
 .current-temperature strong {
 font-size: 40px;
@@ -51,8 +56,7 @@ font-weight: 500;
 .real-feel-temp {
 font-size: 14px;
 text-align: right;
-position: relative;
-top: -36px;
+
 }
 
 .current-sky {
