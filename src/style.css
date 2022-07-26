@@ -34,9 +34,7 @@ h1 {
 .upd {
     font-size: 10px;
     margin-bottom: 0;
-    position: relative;
-    top: -33px;
-    right: -200px;
+    
 }
 
 .current-temperature strong {
@@ -53,6 +51,8 @@ font-weight: 500;
 .real-feel-temp {
 font-size: 14px;
 text-align: right;
+position: relative;
+top: -36px;
 }
 
 .current-sky {
