@@ -29,6 +29,7 @@ h1 {
     font-size: 40px;
     margin-bottom: 0;
     margin-top: 24px;
+    margin-left: 10px;
 }
 
 .upd {
@@ -126,3 +127,14 @@ top: 15px;
     font-size: 10px;
 
   }
+  
+ #search-button,
+ #home-button {
+    width: 72px;
+ }
+
+ .search-line {
+    padding: 0;
+ }
+ 
+ 
