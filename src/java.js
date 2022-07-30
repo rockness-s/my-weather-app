@@ -97,13 +97,20 @@ function handleSearch(event) {
     fahrenheitLink.classList.remove("active");
     let tempRealUnitEl = document.querySelector("#real-feel-unit");
     tempRealUnitEl.innerHTML = `°C`;
+    inputEL.value = ``;
 }
+
+search("Kiev");
+let cityEl = document.querySelector("#city-upd");
+cityEl.innerHTML = `Kiev`;
 
 
 let searchEl = document.querySelector("form");
 searchEl.addEventListener("submit", handleSearch);
 let searchButton = document.querySelector("#search-button");
 searchButton.addEventListener("click", handleSearch);
+
+
 
 
 function showCurrentPlace(position) {
@@ -200,3 +207,5 @@ celsiusLink.addEventListener("click", displayCelsius);
 
 let celsiusTemp = null;
 let celsiusRealTemp = null;
+
+
