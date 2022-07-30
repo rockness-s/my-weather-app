@@ -93,6 +93,10 @@ function handleSearch(event) {
     search(inputEL.value);
     let cityEl = document.querySelector("#city-upd");
     cityEl.innerHTML = `${inputEL.value}`;
+    celsiusLink.classList.add("active");
+    fahrenheitLink.classList.remove("active");
+    let tempRealUnitEl = document.querySelector("#real-feel-unit");
+    tempRealUnitEl.innerHTML = `°C`;
 }
 
 
@@ -162,19 +166,27 @@ function getCurrentPosition() {
 function displayFahrenheit(event) {
     event.preventDefault();
     let fahrenheitTemp = (celsiusTemp) * 9 / 5 + 32;
+    celsiusLink.classList.remove("active");
+    fahrenheitLink.classList.add("active");
     let fahrenheitTempEl = document.querySelector("#temp");
     fahrenheitTempEl.innerHTML = Math.round(fahrenheitTemp);
     let fahrenheitRealTemp = (celsiusRealTemp) * 9 / 5 + 32;
     let fahrenheitRealTempEl = document.querySelector("#real-feel");
     fahrenheitRealTempEl.innerHTML = Math.round(fahrenheitRealTemp);
+    let tempRealUnitEl = document.querySelector("#real-feel-unit");
+    tempRealUnitEl.innerHTML = `°F`;
 }
 
 function displayCelsius(event) {
     event.preventDefault();
+    fahrenheitLink.classList.remove("active");
+    celsiusLink.classList.add("active");
     let celsiusTempEl = document.querySelector("#temp");
     celsiusTempEl.innerHTML = Math.round(celsiusTemp);
     let celsiusRealTempEl = document.querySelector("#real-feel");
     celsiusRealTempEl.innerHTML = Math.round(celsiusRealTemp);
+    let tempRealUnitEl = document.querySelector("#real-feel-unit");
+    tempRealUnitEl.innerHTML = `°C`;
 }
 
   let homeButton = document.querySelector("#home-button");

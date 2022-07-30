@@ -97,15 +97,19 @@ top: 15px;
   top: 12px;
 }
 
-.fahrenheit-unit {
+.units a {
     text-decoration: none;
-    color: black;
+    color: rgb(67, 67, 67);
 }
 
-.fahrenheit-unit:hover {
-    text-decoration: underline;
-    color: rgba(94, 94, 94, 0.861);
+.units .active {
+color: black;
+cursor: default;
+text-decoration: none;
+font-weight: 700;
 }
+
+
 
 .forecast::after {
     background-color: black;
