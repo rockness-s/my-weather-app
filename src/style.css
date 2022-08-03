@@ -91,11 +91,6 @@ top: 15px;
     margin: 10px 0px;
 }
 
-.forecast-sky .sky {
-  font-size: 20px; 
-  position: relative;
-  top: 12px;
-}
 
 .units a {
     text-decoration: none;
@@ -110,8 +105,7 @@ font-weight: 700;
 }
 
 
-
-.forecast::after {
+.daily-forecast::after {
     background-color: black;
     content: "";
     display: block;
@@ -122,8 +116,13 @@ font-weight: 700;
     width: 100%;
 }
 
-.forecast:hover::after {
+.daily-forecast:hover::after {
     transform: scale(1);
+  }
+
+  .forecast-sky {
+    position: relative;
+    top: -10px;
   }
 
   footer {

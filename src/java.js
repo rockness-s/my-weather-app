@@ -70,12 +70,13 @@ function displayForecast (response) {
     console.log(response.data.daily)
     let forecast = response.data.daily;
     let forecastEl = document.querySelector("#forecast");
-    let forecastHtml = `<div class="row">`;
+    let forecastHtml = ``;
     forecast.forEach(function(forecastDay,index) {
 
     if (index < 5) {
     forecastHtml = forecastHtml + 
-    `<div class="col-2 forecast-date">
+    `<div class="row daily-forecast">
+    <div class="col-2 forecast-date">
     <div>${formatWeekdayForecast(forecastDay.dt)}</div>
     <div>${formatDateForecast(forecastDay.dt)}</div>
   </div>
@@ -103,12 +104,12 @@ function displayForecast (response) {
   <div class="col-2 forecast-hum">
     <div><i class="fa-solid fa-droplet"></i></div>
     <div>${forecastDay.humidity}%</div>
+  </div>
   </div>`;
     }
 
 })
 
-  forecastHtml = forecastHtml + `</div>`;
   forecastEl.innerHTML = forecastHtml;
 }
 
