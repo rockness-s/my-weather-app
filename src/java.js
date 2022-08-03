@@ -71,8 +71,9 @@ function displayForecast (response) {
     let forecast = response.data.daily;
     let forecastEl = document.querySelector("#forecast");
     let forecastHtml = `<div class="row">`;
-    forecast.forEach(function(forecastDay) {
+    forecast.forEach(function(forecastDay,index) {
 
+    if (index < 5) {
     forecastHtml = forecastHtml + 
     `<div class="col-2 forecast-date">
     <div>${formatWeekdayForecast(forecastDay.dt)}</div>
@@ -103,6 +104,7 @@ function displayForecast (response) {
     <div><i class="fa-solid fa-droplet"></i></div>
     <div>${forecastDay.humidity}%</div>
   </div>`;
+    }
 
 })
 
