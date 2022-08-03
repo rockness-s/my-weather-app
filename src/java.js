@@ -1,4 +1,4 @@
-
+//Show current date
 function formatDate(timestamp) {
     let timeUpd = new Date(timestamp);
     let hoursUpd = String(timeUpd.getHours()).padStart(2, "0");
@@ -40,7 +40,34 @@ function fullDate () {
     return `${date} ${monthFull} ${year}`
 }
 
+//Show forecast weekday and date
+function formatWeekdayForecast (timestamp) {
+    let date = new Date (timestamp * 1000);
+    let day = date.getDay();
+    let days = [
+        "Sunday",
+        "Monday",
+        "Tuesday",
+        "Wednesday",
+        "Thursday",
+        "Friday",
+        "Saturday"
+    ];
+
+    return days[day];
+}
+
+function formatDateForecast (timestamp) {
+    let date = new Date(timestamp * 1000);
+    let day = String(date.getDate()).padStart(2, "0");
+    let month = String(date.getMonth() + 1).padStart(2, "0");
+    let fullDate = `${day}/${month}`;
+    return fullDate;  
+}
+
+//Show forecast with API
 function displayForecast (response) { 
+    console.log(response.data.daily)
     let forecast = response.data.daily;
     let forecastEl = document.querySelector("#forecast");
     let forecastHtml = `<div class="row">`;
@@ -48,11 +75,11 @@ function displayForecast (response) {
 
     forecastHtml = forecastHtml + 
     `<div class="col-2 forecast-date">
-    <div>${forecastDay.dt}</div>
-    <div>25/07</div>
+    <div>${formatWeekdayForecast(forecastDay.dt)}</div>
+    <div>${formatDateForecast(forecastDay.dt)}</div>
   </div>
 
-  <div class="col-2 forecast-sky">
+  <div class="col-3 forecast-sky">
   <span>
   <img
   src="http://openweathermap.org/img/wn/${forecastDay.weather[0].icon}@2x.png"
@@ -62,7 +89,7 @@ function displayForecast (response) {
   </span>
   </div>
 
- <div class="col-3 forecast-temp">
+ <div class="col-2 forecast-temp">
     <div><i class="fa-solid fa-temperature-half"></i></div>
     <div><strong>${Math.round(forecastDay.temp.day)}</strong>/${Math.round(forecastDay.temp.night)}°C</div>
   </div>
@@ -92,7 +119,7 @@ function getForecast(coord) {
     axios.get(apiUrl).then(displayForecast);
 }
 
-
+//Show current weather
 function showMainInfo(response) {
 let tempEl = document.querySelector("#temp");
 let tempRealEl = document.querySelector("#real-feel");
@@ -142,6 +169,7 @@ function search(city) {
     axios.get(apiUrlSearch).then(showMainInfo);
 }
 
+//Search settings
 function handleSearch(event) {
     event.preventDefault();
     let inputEL = document.querySelector("#search-input");
@@ -155,11 +183,12 @@ function handleSearch(event) {
     inputEL.value = ``;
 }
 
+//Default city for searching
 search("Kiev");
 let cityEl = document.querySelector("#city-upd");
 cityEl.innerHTML = `Kiev`;
 
-
+//Reaction for Search-button and Submit
 let searchEl = document.querySelector("form");
 searchEl.addEventListener("submit", handleSearch);
 let searchButton = document.querySelector("#search-button");
@@ -167,7 +196,7 @@ searchButton.addEventListener("click", handleSearch);
 
 
 
-
+//Reaction for Home-button
 function showCurrentPlace(position) {
     let apiKey = "b5fbcef1543bc4503e1a5412457235aa";
     let link = "https://api.openweathermap.org/data/2.5/weather?";
@@ -225,6 +254,10 @@ function getCurrentPosition() {
     navigator.geolocation.getCurrentPosition(showCurrentPlace);
   }
 
+  let homeButton = document.querySelector("#home-button");
+  homeButton.addEventListener("click", getCurrentPosition);
+
+//Reaction for C and F units
 function displayFahrenheit(event) {
     event.preventDefault();
     let fahrenheitTemp = (celsiusTemp) * 9 / 5 + 32;
@@ -250,9 +283,6 @@ function displayCelsius(event) {
     let tempRealUnitEl = document.querySelector("#real-feel-unit");
     tempRealUnitEl.innerHTML = `°C`;
 }
-
-  let homeButton = document.querySelector("#home-button");
-homeButton.addEventListener("click", getCurrentPosition);
 
 let fahrenheitLink = document.querySelector("#fahrenheit-unit");
 fahrenheitLink.addEventListener("click", displayFahrenheit);
