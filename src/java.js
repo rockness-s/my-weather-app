@@ -40,6 +40,59 @@ function fullDate () {
     return `${date} ${monthFull} ${year}`
 }
 
+function displayForecast (response) { 
+    let forecast = response.data.daily;
+    let forecastEl = document.querySelector("#forecast");
+    let forecastHtml = `<div class="row">`;
+    forecast.forEach(function(forecastDay) {
+
+    forecastHtml = forecastHtml + 
+    `<div class="col-2 forecast-date">
+    <div>${forecastDay.dt}</div>
+    <div>25/07</div>
+  </div>
+
+  <div class="col-2 forecast-sky">
+  <span>
+  <img
+  src="http://openweathermap.org/img/wn/${forecastDay.weather[0].icon}@2x.png"
+  alt=""
+  width="80px"
+  />
+  </span>
+  </div>
+
+ <div class="col-3 forecast-temp">
+    <div><i class="fa-solid fa-temperature-half"></i></div>
+    <div><strong>${Math.round(forecastDay.temp.day)}</strong>/${Math.round(forecastDay.temp.night)}°C</div>
+  </div>
+
+  <div class="col-3 forecast-wind">
+    <div><i class="fa-solid fa-wind"></i></div>
+    <div>${Math.round(forecastDay.wind_speed * 3.6)} km/h</div>
+  </div>
+
+  <div class="col-2 forecast-hum">
+    <div><i class="fa-solid fa-droplet"></i></div>
+    <div>${forecastDay.humidity}%</div>
+  </div>`;
+
+})
+
+  forecastHtml = forecastHtml + `</div>`;
+  forecastEl.innerHTML = forecastHtml;
+}
+
+
+function getForecast(coord) {
+    let apiKey = "b5fbcef1543bc4503e1a5412457235aa";
+    let units = "metric";
+    let apiUrl = `https://api.openweathermap.org/data/2.5/onecall?lat=${coord.lat}&lon=${coord.lon}&appid=${apiKey}&units=${units}`; 
+
+    axios.get(apiUrl).then(displayForecast);
+}
+
+
 function showMainInfo(response) {
 let tempEl = document.querySelector("#temp");
 let tempRealEl = document.querySelector("#real-feel");
@@ -75,7 +128,10 @@ dayEl.innerHTML = fullDate();
 iconEl.setAttribute(
 "src", 
 `http://openweathermap.org/img/wn/${response.data.weather[0].icon}@2x.png`)
+
+getForecast(response.data.coord);
 }
+
 
 function search(city) {
     let apiKey = "b5fbcef1543bc4503e1a5412457235aa";
@@ -84,7 +140,6 @@ function search(city) {
     let apiUrlSearch = `${link}q=${city}&appid=${apiKey}&units=${units}`; 
 
     axios.get(apiUrlSearch).then(showMainInfo);
-
 }
 
 function handleSearch(event) {
