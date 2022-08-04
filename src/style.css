@@ -6,7 +6,7 @@ body {
     max-width: 705px;
     margin: 60px auto;
     margin-bottom: 2px;
-    min-width: 500px;
+    min-width: 705px;
 }
 
 .current-weather,
@@ -28,18 +28,32 @@ h1 {
     font-weight: 700;
     font-size: 40px;
     margin-bottom: 0;
-    margin-top: 24px;
+    margin-top: 5px;
     margin-left: 10px;
 }
+
+#weather-description {
+    margin-left: 10px;
+    font-size: 16px;
+    display: inline-block;
+}
+
+#weather-description::first-letter {
+    text-transform: capitalize;
+  }
 
 .upd {
     font-size: 10px;
     margin-bottom: 0;
     display: inline-block;
+    vertical-align: middle;
 }
 
+
 .date {
-    margin-left: 6px;
+    display: block;
+    padding-top: 4px;
+    padding-left: 12px;
 }
 
 
@@ -72,6 +86,10 @@ top: 18px;
 text-align: center;
 }
 
+.main-details {
+margin-top: 14px;
+}
+
 .title {
     font-weight: 500;
     
@@ -81,7 +99,10 @@ text-align: center;
 vertical-align: middle;
 position: relative;
 top: 15px;
+margin-top: 0;
 }
+
+
 
 .main-section {
    margin-bottom: 8px;
@@ -134,7 +155,17 @@ font-weight: 700;
  #search-button,
  #home-button {
     width: 72px;
+    display: inline;
+
  }
+ 
+ #search-input {
+    width: 400px;
+    display: inline;
+    margin-left: 50px;
+    
+ }
+
 
 
  

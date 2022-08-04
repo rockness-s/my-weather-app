@@ -13,23 +13,21 @@
 <body>
   <div class="container">
     <form>
-      <div class = "row search-area">
-        <div class="col-9">
+      <div class = "search-area">
+        <span>
           <input type="search"
           placeholder="Type a city..."
           autocomplete="off"
           id="search-input"
-          class="search-line form-control"
+          class="form-control"
       />      
-        </div>
-        <div class="col-3">
-          <button type="button" class="btn btn-dark" id="search-button">
+        </span> 
+        <button type="button" class="btn btn-dark" id="search-button">
             <i class="fa-solid fa-magnifying-glass"></i>
           </button>
           <button type="button" class="btn btn-dark" id="home-button">
             <i class="fa-solid fa-house"></i>
-          </button>
-        </div>   
+          </button> 
       </div>
     </form>
 
@@ -38,12 +36,12 @@
         <div class="col-8">
           <div class="upd">
             <h1 id="city-upd">
-            
-            </h1>  
+            </h1> 
+            <span id="weather-description"></span> 
          </div>
           <div class="upd date">
-            <div id="time-upd"></div>
-            <div id="date-upd"></div>
+            <span id="date-upd"></span>,
+            <span id="time-upd"></span>
           </div>
         </div>
         <div class="col-4">

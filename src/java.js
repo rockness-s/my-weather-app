@@ -73,7 +73,7 @@ function displayForecast (response) {
     let forecastHtml = ``;
     forecast.forEach(function(forecastDay,index) {
 
-    if (index < 5) {
+    if (index < 6) {
     forecastHtml = forecastHtml + 
     `<div class="row daily-forecast">
     <div class="col-2 forecast-date">
@@ -124,6 +124,7 @@ function getForecast(coord) {
 
 //Show current weather
 function showMainInfo(response) {
+let cityEl = document.querySelector("#city-upd");
 let tempEl = document.querySelector("#temp");
 let tempRealEl = document.querySelector("#real-feel");
 let windEl = document.querySelector("#details-wind");
@@ -131,6 +132,7 @@ let humEl = document.querySelector("#details-hum");
 let timeEl = document.querySelector("#time-upd");
 let dayEl = document.querySelector("#date-upd");
 let iconEl = document.querySelector("#current-icon");
+let descrEl = document.querySelector("#weather-description");
 
 let sunriseTime = Math.round(response.data.sys.sunrise);
 let dateRise = new Date(sunriseTime * 1000);
@@ -147,6 +149,7 @@ let sunsetEL = document.querySelector("#details-sunset");
 celsiusTemp = response.data.main.temp;
 celsiusRealTemp = response.data.main.feels_like;
 
+cityEl.innerHTML = (response.data.name);
 tempEl.innerHTML = Math.round(celsiusTemp);
 tempRealEl.innerHTML = Math.round(celsiusRealTemp);
 windEl.innerHTML = Math.round(response.data.wind.speed * 3.6);
@@ -158,7 +161,7 @@ dayEl.innerHTML = fullDate();
 iconEl.setAttribute(
 "src", 
 `http://openweathermap.org/img/wn/${response.data.weather[0].icon}@2x.png`)
-
+descrEl.innerHTML = (response.data.weather[0].description); 
 getForecast(response.data.coord);
 }
 
@@ -176,20 +179,23 @@ function search(city) {
 function handleSearch(event) {
     event.preventDefault();
     let inputEL = document.querySelector("#search-input");
+    if (inputEL.value.length > 0) {
     search(inputEL.value);
-    let cityEl = document.querySelector("#city-upd");
-    cityEl.innerHTML = `${inputEL.value}`;
+  } else { alert ("Please, type a city...");
+}
+    //Default Celsius
     celsiusLink.classList.add("active");
     fahrenheitLink.classList.remove("active");
     let tempRealUnitEl = document.querySelector("#real-feel-unit");
     tempRealUnitEl.innerHTML = `°C`;
+    //Clear input line
     inputEL.value = ``;
 }
 
 //Default city for searching
-search("Kiev");
+search("Dnipro");
 let cityEl = document.querySelector("#city-upd");
-cityEl.innerHTML = `Kiev`;
+cityEl.innerHTML = "Dnipro";
 
 //Reaction for Search-button and Submit
 let searchEl = document.querySelector("form");
@@ -208,49 +214,7 @@ function showCurrentPlace(position) {
     let units = "metric";
     let apiUrl = `${link}lat=${lat}&lon=${lon}&appid=${apiKey}&units=${units}`;
 
-    function showCurrentInfo(response) {
-
-
-        let cityName = response.data.name;
-        let showCity = document.querySelector("h1");
-        showCity.innerHTML = `${cityName}`;
-        
-        let tempEl = document.querySelector("#temp");
-        let tempRealEl = document.querySelector("#real-feel");
-        let windEl = document.querySelector("#details-wind");
-        let humEl = document.querySelector("#details-hum");
-        let timeEl = document.querySelector("#time-upd");
-        let dayEl = document.querySelector("#date-upd");
-        let iconEl = document.querySelector("#current-icon");
-        
-        let sunriseTime = Math.round(response.data.sys.sunrise);
-        let dateRise = new Date(sunriseTime * 1000);
-        let hoursRise = String(dateRise.getHours()).padStart(2, "0");
-        let minutesRise = String(dateRise.getMinutes()).padStart(2, "0");
-        let sunriseEL = document.querySelector("#details-sunrise");
-        
-        let sunsetTime = Math.round(response.data.sys.sunset);
-        let dateSet = new Date(sunsetTime * 1000);
-        let hoursSet = String(dateSet.getHours()).padStart(2, "0");
-        let minutesSet = String(dateSet.getMinutes()).padStart(2, "0");
-        let sunsetEL = document.querySelector("#details-sunset");
-        
-        
-        tempEl.innerHTML = Math.round(response.data.main.temp);
-        tempRealEl.innerHTML = Math.round(response.data.main.feels_like);
-        windEl.innerHTML = Math.round(response.data.wind.speed * 3.6);
-        humEl.innerHTML = (response.data.main.humidity);
-        sunriseEL.innerHTML = `${hoursRise} : ${minutesRise}`;
-        sunsetEL.innerHTML = `${hoursSet} : ${minutesSet}`;
-        timeEl.innerHTML = formatDate(response.data.dt * 1000);
-        dayEl.innerHTML = fullDate();
-        iconEl.setAttribute(
-        "src", 
-        `http://openweathermap.org/img/wn/${response.data.weather[0].icon}@2x.png`);
-        getForecast(response.data.coord);
-        }  
-
-        axios.get(apiUrl).then(showCurrentInfo);
+     axios.get(apiUrl).then(showMainInfo);
 
  }
 
