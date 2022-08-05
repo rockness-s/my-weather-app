@@ -149,7 +149,7 @@ font-weight: 700;
   footer {
     text-align: center;
     font-size: 10px;
-
+    margin: 10px;
   }
   
  #search-button,

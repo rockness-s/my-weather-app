@@ -1,3 +1,7 @@
+let apiKey = "b5fbcef1543bc4503e1a5412457235aa";
+let units = "metric";
+
+
 //Show current date
 function formatDate(timestamp) {
     let timeUpd = new Date(timestamp);
@@ -67,7 +71,6 @@ function formatDateForecast (timestamp) {
 
 //Show forecast with API
 function displayForecast (response) { 
-    console.log(response.data.daily)
     let forecast = response.data.daily;
     let forecastEl = document.querySelector("#forecast");
     let forecastHtml = ``;
@@ -115,8 +118,6 @@ function displayForecast (response) {
 
 
 function getForecast(coord) {
-    let apiKey = "b5fbcef1543bc4503e1a5412457235aa";
-    let units = "metric";
     let apiUrl = `https://api.openweathermap.org/data/2.5/onecall?lat=${coord.lat}&lon=${coord.lon}&appid=${apiKey}&units=${units}`; 
 
     axios.get(apiUrl).then(displayForecast);
@@ -167,11 +168,8 @@ getForecast(response.data.coord);
 
 
 function search(city) {
-    let apiKey = "b5fbcef1543bc4503e1a5412457235aa";
     let link = "https://api.openweathermap.org/data/2.5/weather?";
-    let units = "metric";
     let apiUrlSearch = `${link}q=${city}&appid=${apiKey}&units=${units}`; 
-
     axios.get(apiUrlSearch).then(showMainInfo);
 }
 
@@ -195,7 +193,6 @@ function handleSearch(event) {
 //Default city for searching
 search("Dnipro");
 let cityEl = document.querySelector("#city-upd");
-cityEl.innerHTML = "Dnipro";
 
 //Reaction for Search-button and Submit
 let searchEl = document.querySelector("form");
@@ -207,11 +204,9 @@ searchButton.addEventListener("click", handleSearch);
 
 //Reaction for Home-button
 function showCurrentPlace(position) {
-    let apiKey = "b5fbcef1543bc4503e1a5412457235aa";
     let link = "https://api.openweathermap.org/data/2.5/weather?";
     let lat = position.coords.latitude;
     let lon = position.coords.longitude;
-    let units = "metric";
     let apiUrl = `${link}lat=${lat}&lon=${lon}&appid=${apiKey}&units=${units}`;
 
      axios.get(apiUrl).then(showMainInfo);
@@ -260,5 +255,4 @@ celsiusLink.addEventListener("click", displayCelsius);
 
 let celsiusTemp = null;
 let celsiusRealTemp = null;
-
 
